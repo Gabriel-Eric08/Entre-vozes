@@ -5,6 +5,8 @@
     --white: #FFFFFF;
     --text-gray: #6B6B6B;
     --text-dark: #333333;
+    --danger-red: #d9534f; /* Cor para o 188 */
+    --success-green: #28a745; /* Cor para o Psicólogo Gratuito */
 }
 
 body {
@@ -28,12 +30,67 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link { color: var(--text-gray); font-weight: 500; margin-right: 15px; transition: color 0.3s; }
 .nav-link:hover, .nav-link.active { color: var(--purple-main); }
 
-/* Buttons */
+/* Buttons General */
 .btn { border-radius: 50px; padding: 10px 25px; font-weight: 500; transition: all 0.3s ease; }
 .btn-primary-ev { background-color: var(--purple-main); color: var(--white); border: 2px solid var(--purple-main); }
 .btn-primary-ev:hover { background-color: var(--purple-light); border-color: var(--purple-light); color: var(--white); transform: translateY(-2px); }
 .btn-outline-ev { background-color: transparent; color: var(--purple-main); border: 2px solid var(--purple-main); }
 .btn-outline-ev:hover { background-color: var(--purple-soft); color: var(--purple-main); }
+
+/* Floating Action Buttons (Botões Flutuantes) */
+.float-btn {
+    position: fixed;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 9999;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Botão 188 (Mais abaixo) */
+.btn-emergency-float {
+    bottom: 20px;
+    background-color: var(--danger-red);
+}
+
+/* Botão Psicólogo (Acima do 188) */
+.btn-psi-float {
+    bottom: 95px;
+    background-color: var(--success-green);
+}
+
+/* Badge de texto ao passar o mouse (opcional) */
+.float-btn::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 70px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.float-btn:hover::after {
+    opacity: 1;
+}
 
 /* Sections */
 .hero-section { background-color: var(--purple-soft); padding: 80px 0; }
@@ -51,3 +108,22 @@ h1, h2, h3, h4, h5, h6 {
 .section-psi h2, .section-psi p { color: var(--white); }
 
 footer { background-color: #f9f9f9; padding: 40px 0; border-top: 1px solid #eee; margin-top: 60px; }
+
+/* Efeito de flutuação para os cards */
+.relato-card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent !important;
+}
+
+.relato-card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(106, 76, 147, 0.15) !important;
+  border-color: var(--purple-main) !important;
+}
+
+/* Badge personalizada por categoria */
+.badge-melhora { background-color: #d1e7dd; color: #0f5132; }
+.badge-desabafo { background-color: #fff3cd; color: #856404; }
+.badge-informativo { background-color: #cff4fc; color: #055160; }
+.badge-caso { background-color: #f8d7da; color: #842029; }
